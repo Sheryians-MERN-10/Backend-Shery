@@ -1,3 +1,13 @@
+/*
+Node.js Core Modules
+- fs module for file system operations.
+- http module for creating HTTP servers and clients.
+- path module for handling file paths.
+- events module for event - driven programming.
+*/
+
+// ------- path module for handling file paths. ---------
+
 // Output a simple message to the console
 console.log("Hello from js file")
 
