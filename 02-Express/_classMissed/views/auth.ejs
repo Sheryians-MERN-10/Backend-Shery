@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Welcome to auth page</h1>
+
+  <%=info %>
+  <br>
+  <%=profile.name %>
+  <br>
+  <!-- <%=subjects %> -->
+
+  <ol>
+    <% subjects.forEach(function(subject){ %>
+    <li>
+      <%= subject %>
+    </li>
+    <% }) %>
+
+
+
+    <% users.forEach(function(users){ %>
+    <h1>
+      <%= users.name %>
+    </h1>
+    <hr>
+    <p>
+      <%= users.email %>
+    </p>
+    <a href="/delete/<%= users.id%>">Delete</a>
+    <a href="/update/<%= users.id%>">Update</a>
+    <hr>
+    <% }) %>
+  </ol>
+  <br>
+  <button>Explore more</button>
+  <br>
+
+  <a href="./">Back</a>
+</body>
+
+</html>
