@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/register">Register</a>
+        <a href="/login">Login</a>
+    </nav>
+    <br><br>
+    <form action="/registeredShow" method="post">
+        Name: <input type="text" name="name" id=""> <br> <br>
+        Address: <input type="text" name="address" id=""> <br> <br>
+        Contact No: <input type="text" name="contact" id=""> <br> <br>
+        Pasword: <input type="password" name="password" id=""> <br> <br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+
+</html>

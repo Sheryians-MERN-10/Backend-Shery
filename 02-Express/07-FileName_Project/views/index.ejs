@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <style>
+      form{
+        font-size: 1.5rem;
+      }
+      input, select{
+        font-size: 1.4rem;
+      }
+      button{
+        padding: 0.5rem 1.2rem;
+        font-size: 1.2rem;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>    
+    <h1>Show File Path with extension using Form</h1>
+    <br><br>
+
+    <form action="/create" method="post">
+      File Name: <input type="text" name="fileName">     
+      
+      <select name="selectExtension" id="">
+        <option value=".txt">text file</option>
+        <option value=".md">markdown file</option>
+        <option value=".exe">executable</option>
+        <option value=".pdf">pdf</option>
+        <option value=".xsls">excel file</option>
+      </select>
+      
+      <br><br>
+      <button type="submit">Create</button>
+    </form>
+
+  </body>
+</html>
