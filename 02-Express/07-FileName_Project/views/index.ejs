@@ -21,6 +21,17 @@
       font-size: 1.2rem;
       font-weight: bold;
     }
+    .delete{
+      background-color: red;
+      color: white;
+      padding: 0.5rem 1.6rem;
+      border-radius: 1.5rem;
+      font-size: 1.2rem;
+      text-decoration: none;
+    }
+    li{
+      margin: 2rem 0;
+    }
   </style>
 </head>
 
@@ -44,13 +55,22 @@
   </form>
 
   <br><br>
-  <div style="border: 1px solid teal; width: fit-content; padding:1rem 3rem;" >
+  <div style="border: 1px solid teal; width: fit-content; padding:1rem 3rem;">
     <h1>Content of <span style="color: chocolate;">"Upload"</span> Folder : </h1>
-    <% files.forEach((elem)=>{ %>
+
+    <% files.forEach((fileName, i)=>{ %>
       <li style="font-size: 1.3rem;">
-        <%= elem %>
+        <a href="/<%=fileName%>">
+          <%= fileName %>
+        </a>&nbsp;&nbsp;&nbsp;
+        <a href="/delete/<%=fileName%>" class="delete">
+          Delete
+        </a>
+        <textarea name="" id="" cols="30" rows="4"><%= fileContents[i] %>
+        </textarea>
       </li>
       <% }) %>
+
   </div>
 
 </body>
