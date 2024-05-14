@@ -11,32 +11,39 @@ router.get('/', function (req, res, next) {
   const folderPath = path.join(__dirname, "..", "public", "uploads")
   const files = fs.readdirSync(folderPath);
   console.log(files)
-  
-  let fileContents = [];
-  
+
   files.forEach((fileName, i) => {
     console.log(fileName, i)
-    
-    fileContents[i] = fs.readFileSync(path.join(folderPath, fileName), "utf-8");
-    console.log("FILE CONTENT", fileContents)
   })
 
-  res.render('index', { title: 'Express', files, fileContents });
+  res.render('index', { title: 'Express', files, fileContent: "", fileName: "" });
 });
 
 router.post('/create', function (req, res, next) {
-  // console.log(path.dirname(__dirname))
-  var currentWorkingFolder = path.join(__dirname, '..')
-  // console.log(currentWorkingFolder)
-  // console.log(path.join(currentFolder, 'public', 'uploads', req.body.fileName+req.body.selectExtension))
-  let newFileName = req.body.fileName + req.body.selectExtension;
-  let finalPath = path.join(currentWorkingFolder, 'public', 'uploads', newFileName)
-  
-  fs.writeFileSync(finalPath, "");
-  res.redirect("/")
+  try {
+    
+    // console.log(path.dirname(__dirname))
+    var currentWorkingFolder = path.join(__dirname, '..')
+    // console.log(currentWorkingFolder)
+    // console.log(path.join(currentFolder, 'public', 'uploads', req.body.fileName+req.body.selectExtension))
+    let newFileName = req.body.fileName;
+    console.log("FILE-NAME", newFileName)
+    let newFileContent = req.body.fileDesc;
+    console.log("FILE-CONTENT:", newFileContent);
+    let finalPath = path.join(currentWorkingFolder, 'public', 'uploads', newFileName)
+    
+    // fs.writeFileSync(finalPath, "");
+    fs.writeFileSync(finalPath, newFileContent);
 
-  // PRINT PATH TO THE CONSOLE 
-  console.log(finalPath);
+    // res.redirect("/")
+    // ------- Task (13) -------
+    res.redirect(`/${newFileName}`)
+    
+    // PRINT PATH TO THE CONSOLE 
+    console.log(finalPath);
+  } catch (err) {
+    res.send(err)
+  }
 
   // res.render('create', { finalPath, newFileName })
 })
@@ -49,11 +56,15 @@ router.post('/create', function (req, res, next) {
 
 // --------------- READ THE CONTENT OF THE FILE ------
 router.get('/:fileName', function (req, res, next) {
+  const folderPath = path.join(__dirname, "..", "public", "uploads")
+  const files = fs.readdirSync(folderPath);
+
   let filePath = path.join(__dirname, "..", "public", "uploads", req.params.fileName);
   let fileContent = fs.readFileSync(filePath, "utf-8")
 
-  console.log(fileContent)
-  res.render('ShowContent', {title: 'FileContent', fileContent, fileName: req.params.fileName})
+  // console.log(fileContent)
+  // res.render('ShowContent', {title: 'FileContent', fileContent, fileName: req.params.fileName})
+  res.render('index', { title: 'FileContent', files, fileContent, fileName: req.params.fileName })
 })
 
 router.get('/delete/:fileName', function (req, res, next) {
