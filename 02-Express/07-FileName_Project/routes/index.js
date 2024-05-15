@@ -76,4 +76,18 @@ router.get('/delete/:fileName', function (req, res, next) {
   res.redirect('/')
 })
 
+router.post('/update/:fileName', function (req, res, next) {
+  var currentWorkingFolder = path.join(__dirname, '..')
+  let newFileName = req.params.fileName;
+  console.log("NEW FILE NAME:", newFileName);
+  let newFileContent = req.body.updatedData;
+  let finalPath = path.join(currentWorkingFolder, 'public', 'uploads', newFileName)
+
+  fs.writeFileSync(finalPath, newFileContent);
+
+  // res.send(req.body.updatedData)
+  res.redirect(`/${req.params.fileName}`)
+
+})
+
 module.exports = router;

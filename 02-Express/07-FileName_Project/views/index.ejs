@@ -20,6 +20,8 @@
       padding: 0.5rem 1.2rem;
       font-size: 1.2rem;
       font-weight: bold;
+      cursor: pointer;
+      color: orangered;
     }
 
     .delete {
@@ -32,7 +34,11 @@
     }
 
     li {
-      margin: 2rem 0;
+      margin: 1.7rem 0;
+    }
+    #desc{
+      display: flex;
+      align-items: center;
     }
 
     #output-container{
@@ -61,7 +67,9 @@
   <form action="/create" method="post">
     File Name: <input type="text" name="fileName">
     <br> <br>
-    Description: <textarea type="text" name="fileDesc" rows="5" cols="33"></textarea>
+    <div id="desc">
+      Description: <textarea type="text" name="fileDesc" rows="5" cols="33"></textarea>
+    </div>
 
     <!-- <select name="selectExtension" id="">
       <option value=".txt">text file</option>
@@ -71,7 +79,7 @@
       <option value=".xsls">excel file</option>
     </select> -->
 
-    <br><br>
+    <br>
     <button type="submit">Create</button>
   </form>
 
@@ -97,13 +105,17 @@
     <h2>Currently File Opened : <%= fileName %> </h2>    
     <h2>File Content :</h2>
     <% if(fileContent){ %>
-      <form action="">
-        <textarea name="" id="" cols="60" rows="20"><%= fileContent %>
+      <form action="/update/<%=fileName%>" method="post" >
+        <textarea name="updatedData" id="" cols="50" rows="10"><%= fileContent %>
         </textarea>
+
+        <br><br>
+        <button type="submit">Update Content</button>
+
       </form>
-      <% } else { %>
-        <h1>File Content - Not Available !</h1>
-        <% } %>
+        <% } else { %>
+          <h1>File Content - Not Available !</h1>
+          <% } %>
   </div>
 
 </body>
