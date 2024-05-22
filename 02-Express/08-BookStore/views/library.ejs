@@ -1,0 +1,29 @@
+<%- include('partials/header') %>
+    <%- include('partials/nav') %>
+
+        <div class="w-50">
+            <h2 id="category-name" class="mx-5 my-3 py-2 text-white w-25 text-center">Library</h2>
+        </div>
+
+        <div id="container" class="mx-2 my-3 d-flex justify-content-center">
+            <div id="container-in" class="w-75 d-flex flex-wrap justify-content-center gap-5 bg-dark p-5">
+
+                <% data.forEach((item)=>{ %>
+
+                    <div class="card" style="width: 18rem; max-height: 22rem;">
+                        <img src="https://source.unsplash.com/1600x800/?<%=item.title%>" style="height: 800px;" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= item.title %></h5>
+                            <p class="card-text">
+                                <%= item.desc %>
+                            </p>
+                            <a href="#" class="mycard-button btn">Learn More</a>
+                        </div>
+                    </div>
+
+                <% }) %>
+
+            </div>
+        </div>
+
+        <%- include('partials/footer') %>

@@ -1,0 +1,22 @@
+<%- include('partials/header') %>
+    <%- include('partials/nav') %>
+
+        <div class="w-50">
+            <h2 id="category-name" class="mx-5 my-3 py-2 text-white w-25 text-center">About Us</h2>
+        </div>
+
+        <div id="container" class="mx-2 my-3 d-flex justify-content-center">
+            <div id="container-in" class="w-75 d-flex flex-column gap-5 bg-dark p-5">
+
+                <% data.forEach((item)=>{ %>
+
+                    <div class="box text-center">
+                        <h1 id="about-title-highlight"><%= item.heading %></h1>
+                        <p class=""><%= item.content %> </p>                    
+                </div>                
+                <% }) %>
+                
+            </div>
+        </div>
+
+        <%- include('partials/footer') %>

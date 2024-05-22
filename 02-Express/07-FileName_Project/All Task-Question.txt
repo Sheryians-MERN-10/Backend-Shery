@@ -1,0 +1,48 @@
+Create an Express App
+
+1. Create a form in homepage -> /
+	form must include input:text(filename) and button with method post and action "/create"
+
+2. make a post route of "/create" in "index.js"  
+now create a folder name "upload" in public folder, 
+and using path package send "path" of the .../upload/filename.ext to browser,
+
+let filepath= path.join(__dirname, "..", "public", "upload", req.body.filename)
+"abc/public/upload/index.html"
+
+3. Use "fs" package to and create an empty file on the same path given above
+ and send message to browser "file created!"
+
+4. Edit the "/create" post route and instead of sending "file created!" redirect the route to "/" existing get route
+
+res.redirect("/") // existing get route
+
+6. Edit the "/" get route and read the directory "upload" with "path" and "fs" package and console.log(...) it in terminal
+
+7. Re-edit again the  "/" get route and send the files(array) in render and with the help of forEach show the list of files in "index.ejs"
+
+8. Make the list item clickable and redirect to /file/:filename get route 
+make /file/:filename get route in "index.js"
+where the route send the param "filename" to browser
+
+9. in the get route /file/:filename write a code to delete the respective file coming in the params with the help of path and fs and redirect the app to / get route
+
+10. instead of clicking on file make "X" icon to delete the file in index.ejs
+
+11. Make file in index.ejs cickable
+ it should redirect to /:filename get route, 
+in the route we read the file data coming in req.params.filename with the help of fs and path and send it to the browser
+
+12. edit /:filename and instead of send use render index.ejs with the read data
+	in index.ejs create new form below 
+	create textarea in it and show the file data 
+
+
+13. edit the /create post route and instead of redirecting to / get route redirect to /:filename route i.e 
+res.redirect(/${req.body.filename})
+
+14. add a submit button in new form in "index.ejs" and action of /update/:filename of post route
+    make the same route in "index.js", we will get the file name from req.params.filename
+    the updated data will be get in req.body.filedata
+    write the code to rewrite(writeFileSync) the file in the same path with fs and path
+    at last redirect to /:filename get route
