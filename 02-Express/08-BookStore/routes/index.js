@@ -6,6 +6,10 @@ router.get('/', function (req, res, next) {
   res.render('home', { title: 'Book Store' });
 });
 
+router.get('/create-book', function (req, res, next) {
+  res.render('createBook', {title: "Create Book"})
+})
+
 router.get('/library', function (req, res, next) {
   let data = [
     {
@@ -58,6 +62,24 @@ router.get('/library', function (req, res, next) {
     }
   ];
   res.render('library', { title: 'Library', data })
+})
+
+router.post('/library', function (req, res, next) {
+  let data = [
+    {
+      title: "Physics",
+      desc: "A comprehensive guide to the fundamentals of physics, covering classical mechanics, electromagnetism, and thermodynamics."
+    },
+    {
+      title: "Organic Chemistry",
+      desc: "An in-depth look at the principles of organic chemistry, including reaction mechanisms and the structure of organic compounds."
+    }
+  ];
+  res.render('library', {title: "Library", data})
+})
+
+router.get('/details', function (req, res, next) {
+  res.render('details', {title: "Book Details/Update"})
 })
 
 router.get('/about', function (req, res, next) {

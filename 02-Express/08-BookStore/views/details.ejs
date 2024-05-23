@@ -1,0 +1,30 @@
+<%- include('partials/header') %>
+    <%- include('partials/nav') %>
+
+        <div id="container-details" class="m-5 p-5 d-flex gap-4 " style="height: 75vh;">
+            <div class="w-50 h-100 d-flex align-items-center">
+                <img src="https://source.unsplash.com/1600x1000/?library" class="w-100 h-100" alt="">
+            </div>
+
+            <div class="w-50 d-flex flex-column justify-content-center align-items-center ">
+                <h1 class="fw-bold" >Update Book Details</h1>
+                <form action="/update" method="post" id="updateBook" class="d-flex gap-2 my-3  w-100 flex-column align-items-center">
+                    <input type="url" class="w-75" name="poster" id="" placeholder="Book Poster Link 🔗">                    
+                        <input type="text" class="w-75" name="bookName" id="" placeholder="Book Name">
+                        <input type="text" class="w-75" name="authorName" id="" placeholder="Author Name">                    
+                        <input type="text" class="w-75" name="isbn" id="" placeholder="ISBN Number">
+                        <input type="text" class="w-75" name="price" id="" placeholder="Book Price">
+                    
+                    <textarea name="desc" id="" class="w-75" rows="6"
+                        placeholder=" Enter Description About Book here.."></textarea>
+
+                        <div class="d-flex justify-content-between w-75">
+                            <button class="mycard-button btn  w-25" style="font-size: 1.2rem;">Update</button>
+                            <button class="btn btn-danger w-25 fw-bold" style="font-size: 1.2rem;">Delete</button>
+                        </div>
+                </form>
+
+            </div>
+        </div>
+
+        <%- include('partials/footer') %>

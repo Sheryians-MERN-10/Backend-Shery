@@ -1,23 +1,29 @@
 <%- include('partials/header') %>
     <%- include('partials/nav') %>
 
-        <div class="w-50">
-            <h2 id="category-name" class="mx-5 my-3 py-2 text-white w-25 text-center">Library</h2>
-        </div>
+    
+    <section id="createBook" class=" d-flex justify-content-center"   >
+        <a href="/create-book" class=" mycard-button px-5 mx-5 my-3 fs-3 text-decoration-none bg-primary-hover py-2 w-25 text-center rounded-5 fw-bold ">Create New Book</a>
+    </section>
 
-        <div id="container" class="mx-2 my-3 d-flex justify-content-center">
+    <div class="w-50">
+        <h2 id="category-name" class="mx-5 my-3 py-2 text-white w-50 text-center bg-dark">Library Registered Book</h2>
+    </div>
+
+        <div id="container" class="mx-2 my-3 d-flex flex-column align-items-center ">
+            <!-- <h1 class="text-black">Registered Book</h1> -->
             <div id="container-in" class="w-75 d-flex flex-wrap justify-content-center gap-5 bg-dark p-5">
-
                 <% data.forEach((item)=>{ %>
 
                     <div class="card" style="width: 18rem; max-height: 22rem;">
                         <img src="https://source.unsplash.com/1600x800/?<%=item.title%>" style="height: 800px;" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title"><%= item.title %></h5>
+                            <h5 class="card-title fw-bold"><%= item.title %></h5>
+                            <p> <span  class="fw-bold">Author:</span></p>
                             <p class="card-text">
                                 <%= item.desc %>
                             </p>
-                            <a href="#" class="mycard-button btn">Learn More</a>
+                            <a href="/details" class="mycard-button btn">Explore Book</a>
                         </div>
                     </div>
 
