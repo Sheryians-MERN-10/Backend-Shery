@@ -79,7 +79,11 @@ router.post('/library', function (req, res, next) {
 })
 
 router.get('/details', function (req, res, next) {
-  res.render('details', {title: "Book Details/Update"})
+  res.render('detailsBook', {title: "Book Details"})
+})
+
+router.get('/update-book', function (req, res, next) {
+  res.render('updateBook', {title: "Update - Book"})
 })
 
 router.get('/about', function (req, res, next) {
