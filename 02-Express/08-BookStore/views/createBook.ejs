@@ -4,7 +4,7 @@
         <div id="container-createBook" class="m-5 p-5" style="height: 75vh;">
             <h1 class="" style="font-weight: bold;">Register New Book</h1>
 
-            <form action="/library" method="post" id="createBook" class="d-flex gap-4 my-5 w-100 flex-column" >
+            <form action="/create-book" method="post" id="createBook" class="d-flex gap-4 my-5 w-100 flex-column">
                 <input type="url" class="w-50" name="poster" id="" placeholder="Book Poster Link 🔗">
                 <div class="w-100">
                     <input type="text" class="w-25" name="bookName" id="" placeholder="Book Name">
@@ -12,13 +12,13 @@
                 </div>
                 <div>
                     <input type="text" class="w-25" name="isbn" id="" placeholder="ISBN Number">
-                    <input type="text" class="w-25" name="price" id="" placeholder="Book Price"> 
+                    <input type="text" class="w-25" name="price" id="" placeholder="Book Price">
                 </div>
-                <textarea name="desc" id="" class="w-50" rows="6" placeholder=" Enter Description About Book here.."></textarea>
+                <textarea name="desc" id="" class="w-50" rows="6"
+                    placeholder=" Enter Description About Book here.."></textarea>
 
                 <button class="mycard-button btn px-5 w-50" style="font-size: 1.2rem;">Add to Library</button>
-        </form>
-            
-</div>
+            </form>
+        </div>
 
-<%- include('partials/footer') %>
+        <%- include('partials/footer') %>

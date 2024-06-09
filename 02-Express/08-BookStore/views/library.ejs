@@ -15,15 +15,15 @@
             <div id="container-in" class="w-75 d-flex flex-wrap justify-content-center gap-5 bg-dark p-5">
                 <% data.forEach((item)=>{ %>
 
-                    <div class="card" style="width: 18rem; max-height: 22rem;">
-                        <img src="https://source.unsplash.com/1600x800/?<%=item.title%>" style="height: 800px;" class="card-img-top" alt="...">
+                    <div class="card" style="width: 18rem; max-height: 26rem;">
+                        <img src="<%=item.poster%>" style="height: 200px; " class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title fw-bold"><%= item.title %></h5>
-                            <p> <span  class="fw-bold">Author:</span></p>
-                            <p class="card-text">
+                            <h5 class="card-title fw-bold"><%= item.bookName %></h5>
+                            <p> <span  class="fw-bold">Author: </span><%=item.authorName%></p>
+                            <p class="card-text" style="overflow: hidden; height: 64px; text-align: justify;" >
                                 <%= item.desc %>
                             </p>
-                            <a href="/details" class="mycard-button btn">Explore Book</a>
+                            <a href="/details/<%=item._id %>" class="mycard-button btn">Explore Book</a>
                         </div>
                     </div>
 

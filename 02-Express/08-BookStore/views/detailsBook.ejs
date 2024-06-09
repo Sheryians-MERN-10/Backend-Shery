@@ -10,24 +10,27 @@
                 <h2 class="fw-bold text-center bg-dark text-white py-2 ">Book Details</h2>
                 <section class="d-flex flex-column justify-content-between gap-2 my-4 px-5 w-100  h-100">
                     <div>
-                        <h1 class="fw-bold">Book Title</h1>
-                        <h5>By Author Name</h5>
+                        <h1 class="fw-bold">
+                            <%=data.bookName%>
+                        </h1>
+                        <h5>By <%=data.authorName%>
+                        </h5>
                     </div>
                     <div>
                         <h5 class="fw-bold">Book Description :</h5>
-                        <p class="fs-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident laborum sint beatae
-                            quia, error veritatis repudiandae minima aut velit facere.</p>                            
-                        </div>
+                        <p class="fs-5">
+                            <%=data.desc%>
+                        </p>
+                    </div>
                     <div>
-                        <h5 class="fw-bold">ISBN : <span class="fw-normal">N26653286</span> </h5>
-                        <h2 class="fw-bold text-success">Price : <span class="fw-normal" >$100</span> </h2>
+                        <h5 class="fw-bold">ISBN : <span class="fw-normal"><%=data.isbn%></span> </h5>
+                        <h2 class="fw-bold text-success">Price : <span class="fw-normal">$<%=data.price%></span> </h2>
                         <div class="d-flex justify-content-around  w-100 mt-5">
-                            <a href="/update-book" class="mycard-button btn  w-25" style="font-size: 1.2rem;">Update</a>
-                            <button class="btn btn-danger w-25 fw-bold" style="font-size: 1.2rem;">Delete</button>
+                            <a href="/update-book/<%=data._id%>" class="mycard-button btn  w-25" style="font-size: 1.2rem;">Update</a>
+                            <a href="/delete/<%=data._id%>" class="btn btn-danger w-25 fw-bold" style="font-size: 1.2rem;">Delete</a>
                         </div>
                     </div>
                 </section>
-
             </div>
         </div>
 

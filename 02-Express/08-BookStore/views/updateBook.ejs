@@ -3,25 +3,28 @@
 
         <div id="container-details" class="m-5 p-5 d-flex gap-4 " style="height: 75vh;">
             <div class="w-50 h-100 d-flex align-items-center">
-                <img src="./images/Library.jpg" class="w-100 h-100" alt="">
+                <!-- <img src="./images/Library.jpg" class="w-100 h-100" alt=""> -->
+                <img src="<%=data.poster%>" class="w-100 h-100" alt="">
             </div>
 
             <div class="w-50 d-flex flex-column justify-content-center align-items-center ">
-                <h1 class="fw-bold" >Update - Book Details</h1>
-                <form action="/update" method="post" id="updateBook" class="d-flex gap-2 my-3  w-100 flex-column align-items-center">
-                    <input type="url" class="w-75" name="poster" id="" placeholder="Book Poster Link 🔗">                    
-                        <input type="text" class="w-75" name="bookName" id="" placeholder="Book Name">
-                        <input type="text" class="w-75" name="authorName" id="" placeholder="Author Name">                    
-                        <input type="text" class="w-75" name="isbn" id="" placeholder="ISBN Number">
-                        <input type="text" class="w-75" name="price" id="" placeholder="Book Price">
-                    
-                    <textarea name="desc" id="" class="w-75" rows="6"
-                        placeholder=" Enter Description About Book here.."></textarea>
+                <h1 class="fw-bold">Update - Book Details</h1>
+                <form action="/update-book/<%=data._id%>" method="post" id="updateBook"
+                    class="d-flex gap-2 my-3  w-100 flex-column align-items-center">
+                    <input value="<%=data.poster%>" type="url" class="w-75" name="poster" id="" placeholder="Book Poster Link 🔗">
+                    <input value="<%=data.bookName%>" type="text" class="w-75" name="bookName" id="" placeholder="Book Name">
+                    <input value="<%=data.authorName%>" type="text" class="w-75" name="authorName" id="" placeholder="Author Name">
+                    <input value="<%=data.isbn%>" type="text" class="w-75" name="isbn" id="" placeholder="ISBN Number">
+                    <input value="<%=data.price%>" type="text" class="w-75" name="price" id="" placeholder="Book Price">
 
-                        <div class="d-flex justify-content-between w-75">
-                            <button type="submit" class="mycard-button btn w-25" style="font-size: 1.2rem;">Save</button>                            
-                            <a href="/details" class=" btn btn-outline-danger w-25 fw-bold" style="font-size: 1.2rem;">Cancel</a>                            
-                        </div>
+                    <textarea name="desc" id="" class="w-75" rows="6"
+                        placeholder=" Enter Description About Book here.."><%= data.desc%></textarea>
+
+                    <div class="d-flex justify-content-between w-75">
+                        <button type="submit" class="mycard-button btn w-25" style="font-size: 1.2rem;">Save</button>
+                        <a href="/details/<%=data._id%>" class=" btn btn-outline-danger w-25 fw-bold"
+                            style="font-size: 1.2rem;">Cancel</a>
+                    </div>
                 </form>
 
             </div>

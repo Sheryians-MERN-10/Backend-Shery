@@ -75,3 +75,54 @@ res.redirect()
 <form action="/delete/<%= data %>" method="get">
 
 router.get('/delete/:fileName', function (req, res, next) {
+
+
+<!-- -------- DATABASE --------  -->
+
+# Install
+
+-  Mongodb Compass
+-  Shell
+- Mongodb Atlas
+
+# Command:
+
+mongo  sh
+
+# FOlder for Database is 'models'
+/models/db.js
+
+# db.js
+
+```js
+const mongoose = require("mongoose")
+mongoose.connect("mongodb://127.0.0.1:27017/dbname").then(()=>{
+  console.log("Database Connected !")
+}).catch((err)=>{
+
+})
+```
+
+# app.js  (starting file jo chalegi)
+require('./models/db')
+
+const Book = require('./models/bookModel') // 🔥
+
+# bookModel.js or bookSchema.js // 🔥
+```
+console.log("Book Model is working");
+
+const mongoose = require('mongoose')
+const bookModel = new mongoose.Schema({
+    poster: String,
+    name: String,
+    author: String,
+    isbn: String,
+    price: Number,
+    description: String
+});
+
+const bookCollection = mongoose.model("book", bookModel);
+
+module.exports = bookCollection;
+```

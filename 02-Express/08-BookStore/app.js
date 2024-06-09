@@ -1,3 +1,12 @@
+// -------- mongo db --------
+require('./models/db')
+
+const Book = require('./models/bookModel')
+
+// const newBook = 
+
+// -------- -------- --------
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
