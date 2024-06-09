@@ -10,7 +10,7 @@ const mongoose = require('mongoose')
 //     poster: String    
 // });
 
-const bookModel = new mongoose.Schema({
+const bookSchema = new mongoose.Schema({
     bookName: {
         type: String,
         required: [true, "Book Name is Required !"],
@@ -53,6 +53,6 @@ const bookModel = new mongoose.Schema({
     }    
 });
 
-const bookCollection = mongoose.model("book", bookModel);
+const bookModel = mongoose.model("book", bookSchema);
 
-module.exports = bookCollection;
+module.exports = bookModel
