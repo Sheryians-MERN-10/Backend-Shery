@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View ALl Property</title>
+</head>
+
+<body>
+    <h1>All Property - List</h1>
+
+    <div>
+        <% data.forEach((item)=>{ %>
+            <form action="/update/<%= item._id%>">
+                <div style="border: 1px solid green; margin: 5px; padding: 1rem;">
+                    <p>
+                        <%= item.imageURL %>
+                    </p>
+                    <p>
+                        <%= item.ownerName%>
+                    </p>
+                    <p>
+                        <%= item.propertyTitle %>
+                    </p>
+                    <p>
+                        <%= item.price %>
+                    </p>
+                    <p>
+                        <%= item.contact %>
+                    </p>
+                    <span>
+                        <%= item.address%>
+                    </span>&nbsp; &nbsp;
+                    <button type="submit">Update</button> &nbsp; &nbsp;
+                    <a href="/delete/<%=item._id%>" style="color: red;">Delete</a>
+                </div>
+            </form>
+    </div>
+    <% }) %>
+        </div>
+</body>
+
+</html>

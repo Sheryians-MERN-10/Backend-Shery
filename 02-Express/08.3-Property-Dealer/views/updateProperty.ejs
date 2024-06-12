@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update - Property</title>
+</head>
+<body>
+    <h1>Update Property</h1>
+    <hr>
+    <form action="/update/<%=data._id%>" method="post">
+        <h1>URL: <input type="url" value="<%=data.imageURL%>" name="imageURL" id=""> </h1> 
+        <h1>Owner Name <input type="text" value="<%=data.ownerName%>" name="ownerName" id=""> </h1> 
+        <h1>Owner Name <input type="text" value="<%=data.propertyTitle%>" name="propertyTitle" id=""> </h1> 
+        <h1>Owner Name <input type="text" value="<%=data.price%>" name="price" id=""> </h1> 
+        <h1>Owner Name <input type="text" value="<%=data.contact%>" name="contact" id=""> </h1> 
+        <h1>Owner Name <input type="text" value="<%=data.address%>" name="address" id=""> </h1> 
+        <h1>Owner Name <input type="text" value="<%=data.description%>" name="description" id=""> </h1> 
+        <button type="submit" style="font-size: 1.5rem; margin-right: 2rem;">Update</button>
+        <a href="/viewALl" style="font-size: 1.5rem; color: red;">Cancel</a>
+    </form>
+</body>
+</html>
