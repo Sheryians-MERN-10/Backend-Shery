@@ -48,10 +48,10 @@ const bookSchema = new mongoose.Schema({
     },
     poster: {
         type: String,
-        require: [true, "Enter Valid Poster Link"],
         trim: true
-    }    
-});
+    }
+
+}, { timestamps: true });
 
 const bookModel = mongoose.model("book", bookSchema);
 

@@ -4,8 +4,9 @@
         <div id="container-createBook" class="m-5 p-5" style="height: 75vh;">
             <h1 class="" style="font-weight: bold;">Register New Book</h1>
 
-            <form action="/create-book" method="post" id="createBook" class="d-flex gap-4 my-5 w-100 flex-column">
-                <input type="url" class="w-50" name="poster" id="" placeholder="Book Poster Link 🔗">
+            <form action="/create-book" enctype="multipart/form-data" method="post" id="createBook" class="d-flex gap-4 my-5 w-100 flex-column">
+                <!-- <input type="url" class="w-50" name="poster" id="" placeholder="Book Poster Link 🔗"> -->
+                <input type="file" class="w-50" name="poster" id="" placeholder="Book Poster Link 🔗">
                 <div class="w-100">
                     <input type="text" class="w-25" name="bookName" id="" placeholder="Book Name">
                     <input type="text" class="w-25" name="authorName" id="" placeholder="Author Name">

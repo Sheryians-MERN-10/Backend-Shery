@@ -3,6 +3,8 @@ var router = express.Router();
 
 const BookCollection = require('../models/bookModel');
 const bookCollection = require('../models/bookModel');
+const {checkPrice} = require('../utils/middlewares')
+const upload = require('../utils/multer');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -34,11 +36,15 @@ router.get('/create-book', function (req, res, next) {
   res.render('createBook', { title: "Create Book" })
 })
 // 🔁 --------  CREATE operation - handle form submission -------- 🔁
-router.post('/create-book', async function (req, res, next) {
+// router.post('/create-book', , async function (req, res, next) {
+// router.post('/create-book', checkPrice, async function (req, res, next) {
+router.post('/create-book', upload.single('poster'), async function (req, res, next) {
   try {
-    const newBook = await new BookCollection(req.body);
+    const newBook = await new BookCollection({...req.body, poster: req.file.filename});
     await newBook.save();
+    console.log("POSTER File Name: " + req.filename)
     console.log("book created")
+    console.log("File Name: " + req.file.originalname)
     // console.log(newBook)
   } catch (err) {
     return res.send(err.message);
