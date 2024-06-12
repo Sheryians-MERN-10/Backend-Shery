@@ -3,8 +3,21 @@ var router = express.Router();
 
 const BookCollection = require('../models/bookModel');
 const bookCollection = require('../models/bookModel');
-const {checkPrice} = require('../utils/middlewares')
+const { checkPrice } = require('../utils/middlewares')
 const upload = require('../utils/multer');
+
+const fs = require('fs');
+const path = require('path');
+
+// Error handling middleware for Multer errors
+const app = express();
+app.use((err, req, res, next) => {
+  if (err instanceof multer.MulterError) {
+    res.status(500).json({ message: err.message });
+  } else if (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -40,7 +53,7 @@ router.get('/create-book', function (req, res, next) {
 // router.post('/create-book', checkPrice, async function (req, res, next) {
 router.post('/create-book', upload.single('poster'), async function (req, res, next) {
   try {
-    const newBook = await new BookCollection({...req.body, poster: req.file.filename});
+    const newBook = await new BookCollection({ ...req.body, poster: req.file.filename });
     await newBook.save();
     console.log("POSTER File Name: " + req.filename)
     console.log("book created")
@@ -70,7 +83,7 @@ router.get('/update-book/:id', async function (req, res, next) {
 router.post('/update-book/:id', async function (req, res, next) {
   const bookId = req.params.id;
   try {
-    const specificBook = await BookCollection.findByIdAndUpdate(bookId, req.body)
+    const specificBook = await BookCollection.findByIdAndUpdate(bookId, req.body);
   } catch (err) {
     return res.render(err.message);
   }
@@ -82,7 +95,10 @@ router.get('/delete/:id', async function (req, res, next) {
   const bookId = req.params.id;
   try {
     // const specificBook = await BookCollection.deleteOne({_id: bookId})
-    const specificBook = await BookCollection.findByIdAndDelete(bookId)
+    const specificBook = await BookCollection.findByIdAndDelete(bookId);
+
+    // console.log(path.join(__dirname, `../public/images/${specificBook.poster}));
+    fs.unlinkSync(path.join(__dirname, `../public/images/${specificBook.poster}`));
   } catch (err) {
     return res.render(err.message);
   }
