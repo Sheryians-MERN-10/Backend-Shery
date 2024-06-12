@@ -1,5 +1,8 @@
+require('dotenv').config({ path: './.env' });
+
 // -------- mongo db --------
 require('./models/db')
+// require('dotenv').config();
 
 const Book = require('./models/bookModel')
 

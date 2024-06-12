@@ -9,16 +9,6 @@ const upload = require('../utils/multer');
 const fs = require('fs');
 const path = require('path');
 
-// Error handling middleware for Multer errors
-const app = express();
-app.use((err, req, res, next) => {
-  if (err instanceof multer.MulterError) {
-    res.status(500).json({ message: err.message });
-  } else if (err) {
-    res.status(500).json({ message: err.message });
-  }
-});
-
 /* GET home page. */
 router.get('/', function (req, res, next) {
   res.render('home', { title: 'Book Store' });
