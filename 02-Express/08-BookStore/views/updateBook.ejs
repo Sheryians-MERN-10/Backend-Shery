@@ -10,11 +10,12 @@
 
             <div class="w-50 d-flex flex-column justify-content-center align-items-center ">
                 <h1 class="fw-bold">Update - Book Details</h1>
-                <form action="/update-book/<%=data._id%>" method="post" id="updateBook"
+                <form action="/update-book/<%=data._id%>" enctype="multipart/form-data" method="post" id="updateBook"
                     class="d-flex gap-2 my-3  w-100 flex-column align-items-center">
 
                     <!-- <input value="<%=data.poster%>" type="url" class="w-75" name="poster" id="" placeholder="Book Poster Link 🔗">                     -->
-                    <input value="<%=data.poster%>" type="text" disabled class="w-75" name="" id="" placeholder="Book Poster Link 🔗">
+                    <input value="<%=data.poster%>" type="file" name="poster" class="w-75"  id="" placeholder="Book Poster Link 🔗">
+                    <input value="<%=data.poster%>" type="hidden" name="oldimage" class="w-75" id="" placeholder="Book Poster Link 🔗">
                     
                     <input value="<%=data.bookName%>" type="text" class="w-75" name="bookName" id="" placeholder="Book Name">
                     <input value="<%=data.authorName%>" type="text" class="w-75" name="authorName" id="" placeholder="Author Name">

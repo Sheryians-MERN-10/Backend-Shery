@@ -1,3 +1,6 @@
+// Load environment variables from .env file (ALWAYS ON TOP - ABOVE ALL CODE OR IMPORT)
+require('dotenv').config({ path: './.env' })
+
 require('./models/db')
 
 var createError = require('http-errors');

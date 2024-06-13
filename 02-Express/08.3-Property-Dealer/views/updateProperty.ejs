@@ -8,7 +8,7 @@
 <body>
     <h1>Update Property</h1>
     <hr>
-    <form action="/update/<%=data._id%>" method="post">
+    <form action="/update/<%=data._id%>" method="post" enctype="multipart/form-data">
         <h1>URL: <input type="url" value="<%=data.imageURL%>" name="imageURL" id=""> </h1> 
         <h1>Owner Name <input type="text" value="<%=data.ownerName%>" name="ownerName" id=""> </h1> 
         <h1>Owner Name <input type="text" value="<%=data.propertyTitle%>" name="propertyTitle" id=""> </h1> 

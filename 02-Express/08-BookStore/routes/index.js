@@ -70,10 +70,23 @@ router.get('/update-book/:id', async function (req, res, next) {
   res.render('updateBook', { title: "Update - Book", data: specificBook })
 })
 
-router.post('/update-book/:id', async function (req, res, next) {
+router.post('/update-book/:id', upload.single('poster'), async function (req, res, next) {
   const bookId = req.params.id;
   try {
-    const specificBook = await BookCollection.findByIdAndUpdate(bookId, req.body);
+    const updatedBook = { ...req.body };
+    if (req.file) {
+      updatedBook.poster = req.file.filename;
+      // console.log("Updated book poster ", updatedBook.poster)
+      const imagePath = path.join(__dirname, `../public/images/${req.body.oldimage}`)
+      // console.log(req.body.oldPosterName);
+
+      console.log(req.body.oldimage);
+
+      fs.unlinkSync(imagePath)
+    }
+
+    await BookCollection.findByIdAndUpdate(bookId, req.body);
+    await BookCollection.findByIdAndUpdate(bookId, updatedBook);
   } catch (err) {
     return res.render(err.message);
   }
@@ -87,8 +100,14 @@ router.get('/delete/:id', async function (req, res, next) {
     // const specificBook = await BookCollection.deleteOne({_id: bookId})
     const specificBook = await BookCollection.findByIdAndDelete(bookId);
 
-    // console.log(path.join(__dirname, `../public/images/${specificBook.poster}));
-    fs.unlinkSync(path.join(__dirname, `../public/images/${specificBook.poster}`));
+    const posterPath = path.join(__dirname, `../public/images/${specificBook.poster}`)
+    if (fs.existsSync(posterPath)) { 
+      // console.log(posterPath);
+      fs.unlinkSync(posterPath);
+    } else {
+      console.error("Book Data Deleted, but Poster Image File NOT FOUND !");
+    }
+
   } catch (err) {
     return res.render(err.message);
   }
