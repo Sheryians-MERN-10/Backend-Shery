@@ -6,16 +6,29 @@
         </div>
 
         <div id="container" class="mx-2 my-3 d-flex justify-content-center">
-            <div id="container-in" class="w-75 d-flex flex-column gap-5 bg-dark p-5">
+            <div id="container-in" class="w-75 d-flex align-items-center gap-5 bg-dark p-5">
 
-                <% data.forEach((item)=>{ %>
+                <div class="box text-center w-50">
+                    <h1 id="about-title-highlight">
+                        About Us
+                    </h1>
+                    <p class="">
+                        Stay in the loop with Bookstore ! <br>Subscribe to our newsletter for the latest book releases, exclusive offers,
+                        and upcoming events. Get personalized book recommendations and be the first to hear about our author signings and
+                        community activities. Join our literary community today and never miss an update!
+                    </p>
+                </div>
 
-                    <div class="box text-center">
-                        <h1 id="about-title-highlight"><%= item.heading %></h1>
-                        <p class=""><%= item.content %> </p>                    
-                </div>                
-                <% }) %>
-                
+                <div class="box text-center h-75 w-50 d-flex flex-column justify-content-center">
+                    <h1 id="about-title-highlight">
+                        Join Our Newsletter
+                    </h1>
+                    <form action="/send-mail" method="post" class="m-5 w-75 d-flex flex-column justify-content-around h-25">
+                        <input type="email" class="fs-5 p-2 px-4 w-100" name="email" placeholder="Enter your email">
+                        <button type="submit" class="btn btn-danger w-100 fw-bold my-5 fs-4">Subscribe </button>
+                    </form>
+                </div>
+
             </div>
         </div>
 

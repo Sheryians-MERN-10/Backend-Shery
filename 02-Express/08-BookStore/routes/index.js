@@ -9,6 +9,8 @@ const upload = require('../utils/multer');
 const fs = require('fs');
 const path = require('path');
 
+const {sendMail} = require('../utils/sendMail');
+
 /* GET home page. */
 router.get('/', function (req, res, next) {
   res.render('home', { title: 'Book Store' });
@@ -99,7 +101,7 @@ router.get('/delete/:id', async function (req, res, next) {
   try {
     // const specificBook = await BookCollection.deleteOne({_id: bookId})
     const specificBook = await BookCollection.findByIdAndDelete(bookId);
-
+    
     const posterPath = path.join(__dirname, `../public/images/${specificBook.poster}`)
     if (fs.existsSync(posterPath)) { 
       // console.log(posterPath);
@@ -107,7 +109,7 @@ router.get('/delete/:id', async function (req, res, next) {
     } else {
       console.error("Book Data Deleted, but Poster Image File NOT FOUND !");
     }
-
+    
   } catch (err) {
     return res.render(err.message);
   }
@@ -115,17 +117,13 @@ router.get('/delete/:id', async function (req, res, next) {
 })
 
 router.get('/about', function (req, res, next) {
-  let data = [
-    {
-      heading: "Welcome to Bookstore",
-      content: "Welcome to Bookstore, where the love for books and community converge to create an exceptional literary experience. Established in 204, we have dedicated ourselves to nurturing the joy of reading and fostering a vibrant community of book lovers."
-    },
-    {
-      heading: "Our Story",
-      content: "Our story began with a simple dream: to create a sanctuary for readers and writers alike. From our modest beginnings as a small, independent bookstore, we have grown into a cherished destination for book enthusiasts. Thanks to the unwavering support of our loyal customers and the commitment of our passionate team, Bookstore has become more than just a bookstore — it’s a community hub where stories come to life."
-    }
-  ]
-  res.render('about', { title: 'About Page', data })
+  
+  res.render('about', { title: 'About Page',  })
+})
+
+// 🔁 --------  HANDLE NODEMAILER -------- 🔁
+router.post('/send-mail', function (req, res, next) {
+  sendMail(req, res);
 })
 
 module.exports = router;

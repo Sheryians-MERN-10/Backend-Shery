@@ -1,28 +1,35 @@
 const nodemailer = require("nodemailer");
 
-const transporter = nodemailer.createTransport({
-    host: "smtp.ethereal.email",
-    port: 587,
-    secure: false, // Use `true` for port 465, `false` for all other ports
-    auth: {
-        user: "maddison53@ethereal.email",
-        pass: "jn7jnAPss4f63QBp6D",
-    },
-});
+exports.sendMail = (req, res) => {
 
-// async..await is not allowed in global scope, must use a wrapper
-async function main() {
-    // send mail with defined transport object
-    const info = await transporter.sendMail({
-        from: '"Maddison Foo Koch 👻" <maddison53@ethereal.email>', // sender address
-        to: "bar@example.com, baz@example.com", // list of receivers
-        subject: "Hello ✔", // Subject line
-        text: "Hello world?", // plain text body
-        html: "<b>Hello world?</b>", // html body
+
+    const transporter = nodemailer.createTransport({
+        host: "smtp.gmail.com",
+        port: 465,
+        secure: true, // Use `true` for port 465, `false` for all other ports
+        auth: {
+            user: `${process.env.SENDER_EMAIL}`,
+            pass: `${process.env.NODEMAILER_PASSWORD}`,
+        },
     });
 
-    console.log("Message sent: %s", info.messageId);
-    // Message sent: <d786aa62-4e0a-070a-47ed-0b0666549519@ethereal.email>
+    const mailOptions = {
+        from: `"Ayush Official 👻" <${process.env.SENDER_EMAIL}>`, // sender address
+        to: req.body.email, // list of receivers
+        subject: "NEWSLETTER SUBSCRIPTION ✔", // Subject line
+        // text: "Hello world?", // plain text body
+        html: `<h1>Welcome to Bookstore.</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, earum.</p>
+    <button>Explore More</button>`, // html body
+    }
+
+transporter.sendMail(mailOptions, (err, info) => {
+        if (err) return res.send(err);
+        console.log(info);
+        return res.send(
+            "<h1 style='text-align:center;color: tomato; margin-top:10%'><span style='font-size:60px;'>✔️</span> <br />Email Sent! Check your inbox , <br/>check spam in case not found in inbox.</h1><a href='/'>HomePage</a>"
+        );
+    });
+
 }
 
-main().catch(console.error);
