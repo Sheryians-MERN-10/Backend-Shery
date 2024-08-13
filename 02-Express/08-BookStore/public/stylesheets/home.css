@@ -1,0 +1,87 @@
+#main-container {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f9f9f9;
+    color: #333;
+}
+
+.header {
+    background: linear-gradient(135deg, #4a90e2, #50e3c2);
+    color: #fff;
+    padding: 20px 10%;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+.hero {
+    background: url('https://i0.wp.com/www.printmag.com/wp-content/uploads/2022/06/Screen-Shot-2022-06-23-at-2.10.28-PM.png?fit=2036%2C1296&quality=80&ssl=1') no-repeat center center/cover;
+    color: #fff;
+    padding: 80px 10%;
+    text-align: center;
+    box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.5);
+}
+
+.hero h2 {
+    margin: 0;
+    font-size: 3em;
+}
+
+.hero p {
+    font-size: 1.2em;
+    margin: 20px 0;
+}
+
+.features {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 40px 10%;
+    gap: 20px;
+}
+
+.feature {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    width: calc(33% - 40px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.feature:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.feature h3 {
+    margin: 0 0 10px;
+    font-size: 1.5em;
+}
+
+.feature p {
+    font-size: 1em;
+    color: #666;
+}
+
+.footer {
+    background: linear-gradient(135deg, #4a90e2, #50e3c2);
+    color: #fff;
+    text-align: center;
+    padding: 15px 10%;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.footer p {
+    margin: 0;
+    font-size: 0.9em;
+}
