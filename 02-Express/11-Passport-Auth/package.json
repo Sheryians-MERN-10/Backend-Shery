@@ -7,7 +7,11 @@
     "dev": "nodemon ./bin/www"
   },
   "dependencies": {
+<<<<<<< HEAD
     "connect-flash": "^0.1.1",
+=======
+    "bcrypt": "^5.1.1",
+>>>>>>> 9053205eb0f83582ef8959b4e11a39ec6216a1b9
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "dotenv": "^16.4.5",
