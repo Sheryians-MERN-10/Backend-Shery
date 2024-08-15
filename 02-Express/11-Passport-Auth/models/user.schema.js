@@ -8,7 +8,7 @@ const plm = require('passport-local-mongoose');
 const user_schema = mongoose.Schema({
     email: {
         type: String,
-        required: [true, "Book Name is Required!"], // Field is required with a custom error message
+        required: true
     },
     username: {
         type: String,
@@ -19,13 +19,15 @@ const user_schema = mongoose.Schema({
 );
 
 // Apply the passport-local-mongoose plugin to the schema
-user_schema.plugin(plm);
+// Configured to use 'email' as the field for login instead of the default 'username'
+// user_schema.plugin(plm); 
+user_schema.plugin(plm, { usernameField: 'email' });    // ⭐⭐⭐
 
 // Create a model named "social-media" using the user schema
-const Demo_Collection = mongoose.model("DemoAuth", user_schema);
+const User = mongoose.model("User", user_schema);
 
 // Log a message indicating the schema has been created
 console.log("Schema Created");
 
 // Export the user collection model
-module.exports = Demo_Collection;
+module.exports = User;
